@@ -28,7 +28,7 @@ The element includes options for columns, gap size, vertical alignment, and a mo
 
 The template exposes these hooks:
 
-- `.vtxm-content-grid`
+- `.ce_vtxm_content_grid`
 - `.content-grid__headline`
 - `.content-grid__inner`
 - `.content-grid__item`
@@ -43,7 +43,7 @@ The template exposes these hooks:
 - `.cg--align-stretch`
 - `.cg--stack-mobile`
 
-`cssID` is preserved: the configured ID is rendered on the root element and the configured class is appended to `.vtxm-content-grid`.
+`cssID` is preserved: the configured ID is rendered on the root element and the configured class is appended to `.ce_vtxm_content_grid`.
 
 ## Recursion protection
 

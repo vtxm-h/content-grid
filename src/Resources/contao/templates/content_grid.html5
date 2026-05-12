@@ -2,7 +2,7 @@
 
 use Contao\StringUtil;
 
-$classes = trim('vtxm-content-grid '.$this->gridClasses.' '.$this->elementClass);
+$classes = trim('ce_vtxm_content_grid '.$this->gridClasses.' '.$this->elementClass);
 $idAttribute = '' !== (string) $this->elementId ? ' id="'.StringUtil::specialchars($this->elementId).'"' : '';
 
 ?>
