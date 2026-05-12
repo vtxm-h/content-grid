@@ -1,4 +1,4 @@
-# Content-grid
+# Content Grid
 
 Contao 4.13 bundle that adds the structural content element `vtxm_content_grid`.
 
