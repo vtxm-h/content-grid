@@ -1,37 +1,109 @@
-# Content Grid
+# Content Grid (Contao)
 
-Contao 4.13 bundle that adds the structural content element `vtxm_content_grid`.
+Reusable Contao content element that renders the published content elements of a selected source article inside a configurable grid.
 
-The element renders the published content elements from a selected source article into a configurable grid. It is meant for small structural and micro-layout use cases, not for reusable content element composition.
+Designed as a micro-layout element: it defines a grid wrapper, while actual content is managed through normal Contao content elements in a source article.
 
-## Installation
+- Includes recursion protection
+- Theme-agnostic output
+- No frontend CSS included by design
 
-```bash
-composer require vtxm-h/content-grid
-```
-
-Then update the Contao database so the new `tl_content` fields are created.
 
 ## Usage
 
-Create a new content element in the `vtxm` category and choose **Content grid**.
+- Add a new content element of type **Content Grid**
+- Select the source page
+- Save / reload if needed
+- Select the source article
+- Choose:
+  - columns
+  - gap
+  - alignment
+  - mobile stacking
+- Add project CSS for the actual grid behavior
 
-Select the source page first, then choose one of that page's articles. The content grid will render the published content elements from the selected article. Each rendered element is wrapped in:
+The selected article can contain any published Contao content elements, for example:
 
-```html
-<div class="content-grid__item">...</div>
+- Iconboxes
+- Text elements
+- Images
+- Quotes
+- Cards
+- Custom content elements
+
+
+## Recommended Role
+
+Use this bundle when you need to render multiple content elements as a grid.
+
+Recommended separation:
+
+- `article-insert` = article include module
+- `layout-preset` = macro layout / split layout
+- `content-grid` = micro layout / grid container
+- `content-elements` = reusable content blocks
+
+Typical structure:
+
+```text
+Layout Preset
+├── Slot A: Members Grid
+└── Slot B: Content Grid
+        └── Source article: Iconboxes
+              ├── Iconbox
+              ├── Iconbox
+              ├── Iconbox
+              └── Iconbox
 ```
 
-The element includes options for columns, gap size, vertical alignment, and a mobile stacking hook. The bundle does not ship frontend CSS, so projects can define the actual grid behavior in their theme or asset pipeline.
 
-## HTML hooks
+## Notes
 
-The template exposes these hooks:
+This bundle does not include frontend CSS intentionally.
+
+Use your project CSS or asset pipeline to define:
+
+- column behavior
+- spacing
+- responsive stacking
+- item styling
+- dark / light section variants
+
+CSS ID / class values from the backend are preserved:
+
+- configured ID is rendered on the root element
+- configured CSS class is appended to the root element
+
+
+## Recursion Protection
+
+The element keeps a render stack of source article IDs.
+
+If an article would be rendered again while it is already being rendered, the nested render is skipped to prevent recursive article inclusion.
+
+Example:
+
+- Content Grid renders Article A
+- Article A contains another Content Grid
+- That Content Grid tries to render Article A again
+
+In this case, rendering is stopped for the recursive article.
+
+
+## HTML Hooks
+
+Root class:
 
 - `.ce_vtxm_content_grid`
+
+Inner hooks:
+
 - `.content-grid__headline`
 - `.content-grid__inner`
 - `.content-grid__item`
+
+Modifier classes:
+
 - `.cg--cols-2`
 - `.cg--cols-3`
 - `.cg--cols-4`
@@ -43,8 +115,68 @@ The template exposes these hooks:
 - `.cg--align-stretch`
 - `.cg--stack-mobile`
 
-`cssID` is preserved: the configured ID is rendered on the root element and the configured class is appended to `.ce_vtxm_content_grid`.
 
-## Recursion protection
+## Template
 
-The element keeps a render stack of source article IDs. If an article would be rendered again while it is already in that stack, the nested render is skipped to prevent recursive article inclusion.
+```text
+content_grid.html5
+```
+
+
+## Installation (via Composer / Contao Manager)
+
+Add the package definition to your Contao project `composer.json` or install it via your configured repository setup.
+
+Example package reference:
+
+```json
+{
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "vtxm-h/content-grid",
+        "version": "1.0.2",
+        "type": "contao-bundle",
+        "license": "MIT",
+        "description": "Contao 4.13 structural content element: render article contents as a configurable grid.",
+        "dist": {
+          "url": "https://github.com/vtxm-h/content-grid/archive/refs/tags/v1.0.2.zip",
+          "type": "zip"
+        },
+        "autoload": {
+          "psr-4": {
+            "Vendor\\ContentGridBundle\\": "src/"
+          }
+        },
+        "require": {
+          "php": "^8.0",
+          "contao/core-bundle": "^4.13",
+          "contao/manager-plugin": "^2.0"
+        },
+        "extra": {
+          "contao-manager-plugin": "Vendor\\ContentGridBundle\\ContaoManager\\Plugin"
+        }
+      }
+    }
+  ]
+}
+```
+
+Install:
+
+```bash
+composer require vtxm-h/content-grid
+```
+
+Then update the Contao database so the new `tl_content` fields are created.
+
+
+## Compatibility
+
+Contao 4.13
+PHP 8.0+
+
+## License
+
+MIT
