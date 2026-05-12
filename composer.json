@@ -1,0 +1,19 @@
+{
+    "name": "vtxm-h/content-grid",
+    "description": "Structural content grid content element for Contao 4.13.",
+    "type": "contao-bundle",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "contao/core-bundle": "^4.13",
+        "contao/manager-plugin": "^2.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\ContentGridBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Vendor\\ContentGridBundle\\ContaoManager\\Plugin"
+    }
+}
