@@ -4,11 +4,10 @@ use Contao\StringUtil;
 
 $classes = trim('vtxm-content-grid '.$this->gridClasses.' '.$this->elementClass);
 $idAttribute = '' !== (string) $this->elementId ? ' id="'.StringUtil::specialchars($this->elementId).'"' : '';
-$styleAttribute = '' !== (string) $this->style ? ' style="'.StringUtil::specialchars($this->style).'"' : '';
 
 ?>
 
-<div<?= $idAttribute ?> class="<?= StringUtil::specialchars($classes) ?>"<?= $styleAttribute ?>>
+<div<?= $idAttribute ?> class="<?= StringUtil::specialchars($classes) ?>">
   <?php if ('' !== $this->headlineText): ?>
     <<?= $this->headlineUnit ?> class="content-grid__headline"><?= StringUtil::specialchars($this->headlineText) ?></<?= $this->headlineUnit ?>>
   <?php endif; ?>

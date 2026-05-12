@@ -2,9 +2,9 @@
     "name": "vtxm-h/content-grid",
     "description": "Structural content grid content element for Contao 4.13.",
     "type": "contao-bundle",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "contao/core-bundle": "^4.13",
         "contao/manager-plugin": "^2.11"
     },
