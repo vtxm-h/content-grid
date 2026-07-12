@@ -152,7 +152,7 @@ Example package reference:
         "require": {
           "php": "^8.0",
           "contao/core-bundle": "^4.13",
-          "contao/manager-plugin": "^2.0"
+          "contao/manager-plugin": "^2.11"
         },
         "extra": {
           "contao-manager-plugin": "Vendor\\ContentGridBundle\\ContaoManager\\Plugin"
@@ -176,6 +176,7 @@ Then update the Contao database so the new `tl_content` fields are created.
 
 Contao 4.13
 PHP 8.0+
+
 
 ## License
 
