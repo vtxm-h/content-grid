@@ -30,7 +30,7 @@ Conceptual repository roles:
 
 - `frontend-assets` provides shared frontend assets, scripts and styles.
 - `content-elements` provides actual Contao content elements.
-- `section-elements` provides larger reusable section components.
+- `section-elements` provides inline structural Start, Area and End elements inside the current article.
 - `content-grid` arranges multiple content elements in a grid.
 - `article-insert` inserts or renders article content in another context.
 - `layout-preset` provides macro layout structures with slots or layout modes.
