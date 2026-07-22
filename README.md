@@ -13,7 +13,6 @@ Designed as a micro-layout element: it defines a grid wrapper, while actual cont
 
 - Add a new content element of type **Content Grid**
 - Select the source page
-- Save / reload if needed
 - Select the source article
 - Choose:
   - columns
@@ -21,6 +20,8 @@ Designed as a micro-layout element: it defines a grid wrapper, while actual cont
   - alignment
   - mobile stacking
 - Add project CSS for the actual grid behavior
+
+The article list depends on the selected page. Selecting a page triggers a backend reload and refreshes the article selector immediately, including before the element is saved for the first time.
 
 The selected article can contain any published Contao content elements, for example:
 
@@ -152,7 +153,8 @@ Example package reference:
         "require": {
           "php": "^8.0",
           "contao/core-bundle": "^4.13",
-          "contao/manager-plugin": "^2.11"
+          "contao/manager-plugin": "^2.11",
+          "vtxm-h/contao-dca-helpers": "^1.0"
         },
         "extra": {
           "contao-manager-plugin": "Vendor\\ContentGridBundle\\ContaoManager\\Plugin"
