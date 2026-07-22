@@ -6,12 +6,16 @@
     "require": {
         "php": "^8.0",
         "contao/core-bundle": "^4.13",
-        "contao/manager-plugin": "^2.11"
+        "contao/manager-plugin": "^2.11",
+        "vtxm-h/contao-dca-helpers": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "Vendor\\ContentGridBundle\\": "src/"
         }
+    },
+    "scripts": {
+        "test": "php tests/ContentGridOptionsTest.php"
     },
     "extra": {
         "contao-manager-plugin": "Vendor\\ContentGridBundle\\ContaoManager\\Plugin"
